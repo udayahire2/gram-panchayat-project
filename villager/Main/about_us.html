@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Kusumba Gram Panchayat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="footer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #f39c12;
+      --light-color: #f8f9fa;
+      --text-color: #333;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--secondary-color);
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-color);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #2980b9;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-img {
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .logo-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar {
+      background-color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 12px 15px;
+      color: var(--primary-color);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--secondary-color);
+      background: #f5f5f5;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 4px;
+      box-shadow: var(--shadow);
+      min-width: 180px;
+      display: none;
+      z-index: 10;
+      list-style: none;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 15px;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 25px;
+      cursor: pointer;
+    }
+
+    .bar {
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+      display: none;
+    }
+
+    .mobile-menu-overlay.active {
+      display: block;
+    }
+
+    main {
+      padding: 2rem 0;
+    }
+
+    .section {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .section h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--secondary-color);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 1rem;
+    }
+
+    .feature-card {
+      background: var(--light-color);
+      padding: 1.5rem;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .mobile-menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .mobile-menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: white;
+        transition: var(--transition);
+        z-index: 100;
+      }
+
+      .navbar.active {
+        right: 0;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        padding: 60px 0;
+      }
+
+      .nav-links a {
+        padding: 12px 20px;
+      }
+
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        width: 100%;
+        display: none;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-img {
+        height: 40px;
+      }
+
+      .logo-name {
+        font-size: 1rem;
+      }
+
+      .lang-btn {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo-container">
+        <img src="../image/logo.png" alt="Gram Panchayat Logo" class="logo-img">
+        <h1 class="logo-name" data-translate="logoName">Kusumba Grampanchayat</h1>
+      </div>
+      <div class="nav-controls">
+        <button class="lang-btn" onclick="toggleLanguage()" data-translate="language">
+          <span>EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <div class="mobile-menu-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../Main/index.html" data-translate="home">Home</a></li>
+      <li><a href="../Main/about_village.html" data-translate="aboutVillage">About Village</a></li>
+      <li><a href="../Main/about_us.html" class="active" data-translate="aboutUs">About Us</a></li>
+      <li><a href="gallery.php" data-translate="gallery">Gallery</a></li>
+      <li class="dropdown">
+        <a href="#" data-translate="notices">Notices</a>
+        <ul class="dropdown-menu">
+          <li><a href="../Schemes and meetings/view_meetings.php" data-translate="schemes">Schemes</a></li>
+          <li><a href="../Schemes and meetings/recipient.php" data-translate="recipient">Recipient</a></li>
+          <li><a href="../Schemes and meetings/view_schemes.php" data-translate="meetings">Meetings</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" data-translate="tax">Tax</a>
+        <ul class="dropdown-menu">
+          <li><a href="../Tax/home_tax.php" data-translate="homeTax">Home Tax</a></li>
+          <li><a href="../Tax/water_tax.php" data-translate="waterTax">Water Tax</a></li>
+          <li><a href="../Tax/sanitation_tax.php" data-translate="sanitationTax">Sanitation Tax</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" data-translate="certificates">Certificates</a>
+        <ul class="dropdown-menu">
+          <li><a href="../Certificate/Birth_certificate.php" data-translate="birthCertificate">Birth Certificate</a></li>
+          <li><a href="../Certificate/Death_certificate.php" data-translate="deathCertificate">Death Certificate</a></li>
+          <li><a href="../Certificate/Marriage_certificate.php" data-translate="marriageCertificate">Marriage Certificate</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="mobile-menu-overlay"></div>
+
+  <main>
+    <div class="container">
+      <section class="section about">
+        <h2 data-translate="about_title">About Our Panchayat</h2>
+        <p data-translate="about_content">
+          Kusumba Gram Panchayat is the cornerstone of local governance in our village, working tirelessly to ensure
+          sustainable development and welfare of our community. Established under the Panchayati Raj system, we are
+          committed to transparent, inclusive, and effective administration.
+        </p>
+      </section>
+
+      <section class="section leadership">
+        <h2 data-translate="leadership_title">Panchayat Leadership</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3 data-translate="gram_sevak_title">Gram Sevak</h3>
+            <p data-translate="gram_sevak_desc">Our elected village head leads the panchayat, making key decisions for community development and welfare.</p>
+          </div>
+          <div class="feature-card">
+            <h3 data-translate="ward_members_title">Ward Members</h3>
+            <p data-translate="ward_members_desc">Dedicated representatives from different wards ensure every area's voice is heard in the panchayat.</p>
+          </div>
+          <div class="feature-card">
+            <h3 data-translate="secretary_title">Panchayat Secretary</h3>
+            <p data-translate="secretary_desc">Manages administrative functions and ensures smooth operation of panchayat activities.</p>
+          </div>
+          <div class="feature-card">
+            <h3 data-translate="committee_title">Committee Members</h3>
+            <p data-translate="committee_desc">Specialized committees oversee various aspects like education, health, and infrastructure.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section responsibilities">
+        <h2 data-translate="responsibilities_title">Our Responsibilities</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3 data-translate="tax_manager_title">Tax Manager</h3>
+            <p data-translate="tax_manager_desc">Manages villager tax records and ensures proper tax collection.</p>
+          </div>
+          <div class="feature-card">
+            <h3 data-translate="schemes_manager_title">Schemes and Meetings Manager</h3>
+            <p data-translate="schemes_manager_desc">Oversees government schemes and organizes panchayat meetings.</p>
+          </div>
+          <div class="feature-card">
+            <h3 data-translate="certificate_manager_title">Certificate Manager</h3>
+            <p data-translate="certificate_manager_desc">Handles certificate applications, verification, and issuance processes.</p>
+          </div>
+          <div class="feature-card">
+            <h3 data-translate="villager_manager_title">Villager Manager</h3>
+            <p data-translate="villager_manager_desc">Manages villager records and registration processes.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact">
+        <h2 data-translate="connect_title">Connect With Us</h2>
+        <p data-translate="connect_content">
+          Visit us at the Panchayat Office during working hours (Monday to Saturday, 10 AM to 5 PM) for any assistance
+          or queries. We are here to serve our community and work towards its betterment.
+        </p>
+      </section>
+    </div>
+    
+  </main>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="../Main/index.html">Home</a></li>
+          <li><a href="../Main/about_village.html">About Village</a></li>
+          <li><a href="../Main/about_us.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Tax Services</h4>
+        <ul>
+          <li><a href="../Tax/home_tax.php">Home Tax</a></li>
+          <li><a href="../Tax/water_tax.php">water Tax</a></li>
+          <li><a href="../Tax/sanitation_tax.php">Sanitation Tax</a></li>
+          
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Certificate Services</h4>
+        <ul>
+          <li><a href="../Certificate/Birth_certificate.php">Apply Birth Certificate</a></li>
+          <li><a href="../Certificate/Death_certificate.php">Apply Death Certificate</a></li>
+          <li><a href="../Certificate/Marriage_certificate.php">Apply Marriage Certificate</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <ul class="contact-info">
+          <li><i class="fas fa-map-marker-alt"></i> Kusumba Village, Maharashtra</li>
+        </ul>
+      </div>
+    
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Kusumba Gram Panchayat. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    const translations = {
+      english: {
+        logoName: "Kusumba Grampanchayat",
+        language: "EN",
+        nav_home: "Home",
+        nav_about_village: "About Village",
+        nav_about_us: "About Us",
+        nav_gallery: "Gallery",
+        nav_notices: "Notices",
+        nav_schemes: "Schemes",
+        nav_recipients: "Recipients",
+        nav_meetings: "Meetings",
+        nav_tax: "Tax",
+        nav_home_tax: "Home Tax",
+        nav_water_tax: "Water Tax",
+        nav_sanitation_tax: "Sanitation Tax",
+        nav_certificates: "Certificates",
+        nav_birth_certificate: "Birth Certificate",
+        nav_death_certificate: "Death Certificate",
+        nav_marriage_certificate: "Marriage Certificate",
+        about_title: "About Our Panchayat",
+        about_content: "Kusumba Gram Panchayat is the cornerstone of local governance in our village, working tirelessly to ensure sustainable development and welfare of our community. Established under the Panchayati Raj system, we are committed to transparent, inclusive, and effective administration.",
+        leadership_title: "Panchayat Leadership",
+        gram_sevak_title: "Gram Sevak",
+        gram_sevak_desc: "Our elected village head leads the panchayat, making key decisions for community development and welfare.",
+        ward_members_title: "Ward Members",
+        ward_members_desc: "Dedicated representatives from different wards ensure every area's voice is heard in the panchayat.",
+        secretary_title: "Panchayat Secretary",
+        secretary_desc: "Manages administrative functions and ensures smooth operation of panchayat activities.",
+        committee_title: "Committee Members",
+        committee_desc: "Specialized committees oversee various aspects like education, health, and infrastructure.",
+        responsibilities_title: "Our Responsibilities",
+        tax_manager_title: "Tax Manager",
+        tax_manager_desc: "Manages villager tax records and ensures proper tax collection.",
+        schemes_manager_title: "Schemes and Meetings Manager",
+        schemes_manager_desc: "Oversees government schemes and organizes panchayat meetings.",
+        certificate_manager_title: "Certificate Manager",
+        certificate_manager_desc: "Handles certificate applications, verification, and issuance processes.",
+        villager_manager_title: "Villager Manager",
+        villager_manager_desc: "Manages villager records and registration processes.",
+        connect_title: "Connect With Us",
+        connect_content: "Visit us at the Panchayat Office during working hours (Monday to Saturday, 10 AM to 5 PM) for any assistance or queries. We are here to serve our community and work towards its betterment."
+      },
+      marathi: {
+        logoName: "कुसुंबा ग्रामपंचायत",
+        language: "मराठी",
+        nav_home: "मुख्यपृष्ठ",
+        nav_about_village: "गावाबद्दल",
+        nav_about_us: "आमच्याबद्दल",
+        nav_gallery: "गॅलरी",
+        nav_notices: "सूचना",
+        nav_schemes: "योजना",
+        nav_recipients: "लाभार्थी",
+        nav_meetings: "सभा",
+        nav_tax: "कर",
+        nav_home_tax: "घरपट्टी",
+        nav_water_tax: "पाणीपट्टी",
+        nav_sanitation_tax: "स्वच्छता कर",
+        nav_certificates: "प्रमाणपत्रे",
+        nav_birth_certificate: "जन्म प्रमाणपत्र",
+        nav_death_certificate: "मृत्यू प्रमाणपत्र",
+        nav_marriage_certificate: "विवाह प्रमाणपत्र",
+        about_title: "आमच्या पंचायतीबद्दल",
+        about_content: "कुसुंबा ग्रामपंचायत आमच्या गावातील स्थानिक प्रशासनाचा आधारस्तंभ आहे, आमच्या समुदायाच्या शाश्वत विकास आणि कल्याणासाठी अथक परिश्रम करत आहे. पंचायती राज व्यवस्थेअंतर्गत स्थापित, आम्ही पारदर्शक, समावेशक आणि प्रभावी प्रशासनासाठी वचनबद्ध आहोत.",
+        leadership_title: "पंचायत नेतृत्व",
+        gram_sevak_title: "ग्रामसेवक",
+        gram_sevak_desc: "आमचे निवडलेले गावप्रमुख पंचायतीचे नेतृत्व करतात, समुदायाच्या विकास आणि कल्याणासाठी महत्त्वपूर्ण निर्णय घेतात.",
+        ward_members_title: "वार्ड सदस्य",
+        ward_members_desc: "वेगवेगळ्या वार्डांचे समर्पित प्रतिनिधी पंचायतीत प्रत्येक क्षेत्राचा आवाज ऐकण्याची खात्री करतात.",
+        secretary_title: "पंचायत सचिव",
+        secretary_desc: "प्रशासकीय कार्ये व्यवस्थापित करतात आणि पंचायत क्रियाकलापांची सुरळीत कार्यपद्धती सुनिश्चित करतात.",
+        committee_title: "समिती सदस्य",
+        committee_desc: "विशेष समित्या शिक्षण, आरोग्य आणि पायाभूत सुविधा यांसारख्या विविध पैलूंवर देखरेख करतात.",
+        responsibilities_title: "आमच्या जबाबदाऱ्या",
+        tax_manager_title: "कर व्यवस्थापक",
+        tax_manager_desc: "ग्रामस्थांच्या कर नोंदी व्यवस्थापित करतो आणि योग्य कर संकलन सुनिश्चित करतो.",
+        schemes_manager_title: "योजना आणि सभा व्यवस्थापक",
+        schemes_manager_desc: "सरकारी योजना आणि पंचायत सभांचे आयोजन करते.",
+        certificate_manager_title: "प्रमाणपत्र व्यवस्थापक",
+        certificate_manager_desc: "प्रमाणपत्र अर्ज, सत्यापन आणि जारी प्रक्रिया हाताळतो.",
+        villager_manager_title: "ग्रामस्थ व्यवस्थापक",
+        villager_manager_desc: "ग्रामस्थांच्या नोंदी आणि नोंदणी प्रक्रिया व्यवस्थापित करतो.",
+        connect_title: "आमच्याशी संपर्क साधा",
+        connect_content: "कोणत्याही मदत किंवा प्रश्नांसाठी कामकाजाच्या वेळेत (सोमवार ते शनिवार, सकाळी १० ते संध्याकाळी ५) पंचायत कार्यालयात भेट द्या. आम्ही आमच्या समुदायाची सेवा करण्यासाठी आणि त्याच्या सुधारणेसाठी काम करण्यासाठी येथे आहोत."
+      }
+    };
+
+    let currentLanguage = localStorage.getItem("language") || "english";
+
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === "english" ? "marathi" : "english";
+      localStorage.setItem("language", currentLanguage);
+      applySelectedLanguage();
+    }
+
+    function applySelectedLanguage() {
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[currentLanguage][key]) {
+          element.innerHTML = translations[currentLanguage][key];
+        }
+      });
+      document.querySelector('.lang-btn span').textContent = translations[currentLanguage]["language"];
+    }
+
+    function toggleMobileMenu() {
+      document.querySelector('.navbar').classList.toggle('active');
+      document.querySelector('.mobile-menu-toggle').classList.toggle('active');
+      document.querySelector('.mobile-menu-overlay').classList.toggle('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applySelectedLanguage();
+      document.querySelector('.mobile-menu-toggle').addEventListener('click', toggleMobileMenu);
+      document.querySelector('.mobile-menu-overlay').addEventListener('click', toggleMobileMenu);
+    });
+  </script>
+</body>
+</html>

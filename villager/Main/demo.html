@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English to Marathi Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>English to Marathi Translator</h1>
+        
+        <!-- First Pair -->
+        <div class="input-group">
+            <label for="englishInput1">English Text 1:</label>
+            <input type="text" id="englishInput1" placeholder="Enter first English text here">
+        </div>
+        
+        <div class="input-group">
+            <label for="marathiOutput1">Marathi Translation 1:</label>
+            <input type="text" id="marathiOutput1" placeholder="Marathi translation will appear here" readonly>
+        </div>
+
+        <!-- Second Pair -->
+        <div class="input-group">
+            <label for="englishInput2">English Text 2:</label>
+            <input type="text" id="englishInput2" placeholder="Enter second English text here">
+        </div>
+        
+        <div class="input-group">
+            <label for="marathiOutput2">Marathi Translation 2:</label>
+            <input type="text" id="marathiOutput2" placeholder="Marathi translation will appear here" readonly>
+        </div>
+    </div>
+
+    <script>
+        // Get all input elements
+        const englishInput1 = document.getElementById('englishInput1');
+        const marathiOutput1 = document.getElementById('marathiOutput1');
+        const englishInput2 = document.getElementById('englishInput2');
+        const marathiOutput2 = document.getElementById('marathiOutput2');
+
+        // Function to translate text
+        async function translateText(text, targetOutput) {
+            try {
+                const response = await fetch(
+                    `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=mr&dt=t&q=${encodeURIComponent(text)}`
+                );
+                const data = await response.json();
+                const translatedText = data[0][0][0];
+                targetOutput.value = translatedText;
+            } catch (error) {
+                console.error('Translation error:', error);
+                targetOutput.value = 'Translation error occurred';
+            }
+        }
+
+        // Add event listener for first input
+        englishInput1.addEventListener('input', (e) => {
+            const text = e.target.value.trim();
+            if (text) {
+                translateText(text, marathiOutput1);
+            } else {
+                marathiOutput1.value = '';
+            }
+        });
+
+        // Add event listener for second input
+        englishInput2.addEventListener('input', (e) => {
+            const text = e.target.value.trim();
+            if (text) {
+                translateText(text, marathiOutput2);
+            } else {
+                marathiOutput2.value = '';
+            }
+        });
+    </script>
+</body>
+</html>

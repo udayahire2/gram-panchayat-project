@@ -1,0 +1,135 @@
+[2025-02-13 07:49:04] Received POST data: Array
+(
+    [record_id] => 1
+    [property_number] => 1822
+    [owner_name] => uday ahire
+    [water_tax_type] => General
+    [previous_water_tax] => 150.00
+    [water_tax] => 150.00
+    [total_water_tax] => 150.00
+)
+
+[2025-02-13 07:49:04] SQL Query: UPDATE property_taxes SET 
+            property_number = '1822', 
+            owner_name = 'uday ahire', 
+            water_tax_type = 'General', 
+            previous_water_tax = 150, 
+            water_tax = 150, 
+            total_water_tax = 150 
+            WHERE id = 1
+[2025-02-13 07:49:04] Update successful
+[2025-02-14 06:23:37] Received POST data: Array
+(
+    [record_id] => 4
+    [property_number] => 1234
+    [owner_name] => uday ahire
+    [water_tax_type] => General
+    [previous_water_tax] => 0.00
+    [water_tax] => 150.00
+    [total_water_tax] => 150.00
+)
+
+[2025-02-14 06:23:37] SQL Query: UPDATE property_taxes SET 
+            property_number = '1234', 
+            owner_name = 'uday ahire', 
+            water_tax_type = 'General', 
+            previous_water_tax = 0, 
+            water_tax = 150, 
+            total_water_tax = 150 
+            WHERE id = 4
+[2025-02-14 06:23:37] Update successful
+[2025-02-14 17:22:17] No POST data received
+[2025-02-14 17:22:33] Received POST data: Array
+(
+    [record_id] => 4
+    [property_number] => 1234
+    [owner_name] => jitesh Pardhi
+    [water_tax_type] => General
+    [previous_water_tax] => 0.00
+    [water_tax] => 150.00
+    [total_water_tax] => 150.00
+)
+
+[2025-02-14 17:22:33] SQL Query: UPDATE property_taxes SET 
+            property_number = '1234', 
+            owner_name = 'jitesh Pardhi', 
+            water_tax_type = 'General', 
+            previous_water_tax = 0, 
+            water_tax = 150, 
+            total_water_tax = 150 
+            WHERE id = 4
+[2025-02-14 17:22:33] Update successful
+[2025-02-14 17:22:56] Received POST data: Array
+(
+    [record_id] => 4
+    [property_number] => 1234
+    [owner_name] => jitesh Pardhi
+    [water_tax_type] => General
+    [previous_water_tax] => 0.00
+    [water_tax] => 0
+    [total_water_tax] => 150.00
+)
+
+[2025-02-14 17:22:56] SQL Query: UPDATE property_taxes SET 
+            property_number = '1234', 
+            owner_name = 'jitesh Pardhi', 
+            water_tax_type = 'General', 
+            previous_water_tax = 0, 
+            water_tax = 0, 
+            total_water_tax = 150 
+            WHERE id = 4
+[2025-02-14 17:22:56] Update successful
+[2025-02-14 17:31:01] Received POST data: Array
+(
+    [record_id] => 4
+    [property_number] => 1234
+    [owner_name] => jitesh Pardhi
+    [water_tax_type] => General
+    [previous_water_tax] => 0.00
+    [water_tax] => 150.0
+    [total_water_tax] => 150.00
+)
+
+[2025-02-14 17:31:01] SQL Query: UPDATE property_taxes SET 
+            property_number = '1234', 
+            owner_name = 'jitesh Pardhi', 
+            water_tax_type = 'General', 
+            previous_water_tax = 0, 
+            water_tax = 150, 
+            total_water_tax = 150 
+            WHERE id = 4
+[2025-02-14 17:31:01] Update successful
+[2025-02-14 17:34:05] Received POST data: Array
+(
+    [record_id] => 4
+    [owner_name] => uday ahire
+    [house_type] => RCC
+    [area_sqft] => 450.00
+    [total_home_tax] => 1260.00
+)
+
+[2025-02-14 17:34:05] SQL Query: UPDATE property_taxes SET 
+            property_number = '', 
+            owner_name = 'uday ahire', 
+            house_type = 'RCC', 
+            area_sqft = 450, 
+            total_home_tax = 1260 
+            WHERE id = 4
+[2025-02-14 17:34:05] Update successful
+[2025-02-14 17:36:20] Received POST data: Array
+(
+    [record_id] => 2
+    [owner_name] => jitesh Pardhi
+    [house_type] => RCC
+    [area_sqft] => 450.00
+    [total_home_tax] => 877.50
+)
+
+[2025-02-14 17:36:20] SQL Query: UPDATE property_taxes SET 
+            property_number = '', 
+            owner_name = 'jitesh Pardhi', 
+            house_type = 'RCC', 
+            area_sqft = 450, 
+            total_home_tax = 877.5 
+            WHERE id = 2
+[2025-02-14 17:36:20] Update successful

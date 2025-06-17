@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>घरपट्टी करावहूल पावती</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+        }
+        .clerk-sign {
+    width: 150px; /* आवश्यकतेनुसार बदलू शकता */
+    height: auto;
+    margin-top: 10px;
+}
+        .receipt {
+            width: 100%;
+            max-width: 800px;
+            background-color: #FFD700;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            margin: 15px 0;
+        }
+        
+        .address {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .owner-line {
+            margin-bottom: 20px;
+        }
+        
+        .owner-line input {
+            border: none;
+            border-bottom: 1px solid black;
+            background-color: transparent;
+            width: 70%;
+        }
+        
+        .details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .details div {
+            flex: 1;
+        }
+        
+        .period {
+            text-align: right;
+        }
+        
+        .description {
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        th {
+            font-weight: bold;
+        }
+        
+        .amount-in-words {
+            margin: 15px 0;
+        }
+        
+        .amount-in-words input {
+            border: none;
+            border-bottom: 1px solid black;
+            background-color: transparent;
+            width: 60%;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .date {
+            display: flex;
+            align-items: center;
+        }
+        
+        .date input {
+            width: 30px;
+            text-align: center;
+            border: none;
+            border-bottom: 1px solid black;
+            background-color: transparent;
+            margin: 0 5px;
+        }
+        
+        .signature {
+            text-align: right;
+        }
+        
+        .reference {
+            margin-top: 20px;
+            display: flex;
+        }
+        
+        .reference span {
+            margin-right: 10px;
+        }
+        
+        .reference input {
+            border: none;
+            border-bottom: 1px solid black;
+            background-color: transparent;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt">
+        <div class="header">
+            <div>नमुना नं. १०</div>
+            <div>पावती नं:२२५</div>
+        </div>
+        
+        <div class="title">घरपट्टी करावहूल पावती</div>
+        
+        <div class="address">ग्रामपंचायत कुरुंबा ता. जि. धुळे</div>
+        
+        <div class="owner-line">
+            श्री.<input type="text" id="ownerName">
+        </div>
+        
+        <div class="details">
+            <div>पु.क्र <input type="text" style="width: 50px;"></div>
+            <div>बिल नं. <input type="text" id="billNumber" style="width: 50px;" readonly></div>
+            <div>घर नं. <input type="text" style="width: 50px;"></div>
+            <div class="period">
+    <span id="financialYear">याबद्दल सन 2024 ते 2025</span>
+</div>
+        </div>
+        
+        <div class="description">
+            या सालाकरिता पुढे नमुद केलेल्या रकमा कराबाबत मिळाल्या
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">कराची नावे</th>
+                    <th rowspan="2">मागील बाकी</th>
+                    <th colspan="3">वसुल केलेल्या रकमा<br>चालु कर</th>
+                    <th rowspan="2">एकुण रक्कम</th>
+                </tr>
+                <tr>
+                    <th>कर</th>
+                    <th>सुट</th>
+                    <th>देय रक्कम<br>(३-४)</th>
+                </tr>
+                <tr>
+                    <th>१</th>
+                    <th>२</th>
+                    <th>३</th>
+                    <th>४</th>
+                    <th>५</th>
+                    <th>६(२+५)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>घरपट्टी</td>
+                    <td><input type="text" id="houseTaxPrev" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" id="houseTaxCurrent" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" id="houseTaxDiscount" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" id="houseTaxDue" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" id="houseTaxTotal" style="width: 80%; border: none; background: transparent;"></td>
+                </tr>
+                <tr>
+                    <td>सॅनिटेरीपट्टी</td>
+                    <td><input type="text" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" style="width: 80%; border: none; background: transparent;"></td>
+                </tr>
+                <tr>
+                    <td>पाणी पट्टी</td>
+                    <td><input type="text" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" style="width: 80%; border: none; background: transparent;"></td>
+                </tr>
+               
+                
+                <tr>
+                    <td>एकुण -</td>
+                    <td><input type="text" id="totalPrev" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" id="totalCurrent" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" id="totalDiscount" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" id="totalDue" style="width: 80%; border: none; background: transparent;"></td>
+                    <td><input type="text" id="grandTotal" style="width: 80%; border: none; background: transparent;"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="amount-in-words">
+            अक्षरी रुपये<input type="text" id="amountInWords"> मात्र रोख मिळाले
+        </div>
+        
+        
+        <div class="footer">
+        <div class="date">
+    दिनांक: 
+    <input type="text" id="dateDay" style="width: 30px;"> / 
+    <input type="text" id="dateMonth" style="width: 30px;"> /२०२५
+</div>
+<div class="signature">
+    <span>वसुल करणाऱ्या कारकुनाची सही</span><br>
+    <img src="sig.png" alt="Clerk Signature" class="clerk-sign">
+</div>
+        </div>
+    </div>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+    initializeDate();
+    initializeBillNumber();
+    addInputListeners();
+});
+
+function initializeDate() {
+    let today = new Date();
+    document.getElementById('dateDay').value = String(today.getDate()).padStart(2, '0');
+    document.getElementById('dateMonth').value = String(today.getMonth() + 1).padStart(2, '0');
+}
+
+function initializeBillNumber() {
+    let lastBillNo = localStorage.getItem('billNo');
+    lastBillNo = lastBillNo ? parseInt(lastBillNo) + 1 : 1;
+    document.getElementById('billNumber').value = lastBillNo;
+    localStorage.setItem('billNo', lastBillNo);
+}
+
+function addInputListeners() {
+    ['houseTaxPrev', 'houseTaxCurrent', 'houseTaxDiscount'].forEach(id => {
+        document.getElementById(id).addEventListener('input', calculateTotals);
+    });
+}
+
+function calculateTotals() {
+    const houseTaxPrev = parseFloat(document.getElementById('houseTaxPrev').value) || 0;
+    const houseTaxCurrent = parseFloat(document.getElementById('houseTaxCurrent').value) || 0;
+    const houseTaxDiscount = parseFloat(document.getElementById('houseTaxDiscount').value) || 0;
+    
+    const houseTaxDue = houseTaxCurrent - houseTaxDiscount;
+    document.getElementById('houseTaxDue').value = houseTaxDue.toFixed(2);
+    
+    let houseTaxTotal = houseTaxPrev + houseTaxDue;
+    let penalty = calculatePenalty(houseTaxTotal);
+    houseTaxTotal += penalty;
+    
+    document.getElementById('houseTaxTotal').value = houseTaxTotal.toFixed(2);
+    document.getElementById('penaltyAmount').value = penalty.toFixed(2);
+    
+    updateGrandTotals(houseTaxPrev, houseTaxCurrent, houseTaxDiscount, houseTaxDue, houseTaxTotal);
+    document.getElementById('amountInWords').value = numberToWordsMarathi(houseTaxTotal) + " रुपये";
+}
+
+function calculatePenalty(amount) {
+    let today = new Date();
+    if (today.getMonth() + 1 > 4 || (today.getMonth() + 1 === 4 && today.getDate() > 1)) {
+        return amount * 0.003;
+    }
+    return 0;
+}
+
+function updateGrandTotals(prev, current, discount, due, total) {
+    document.getElementById('totalPrev').value = prev.toFixed(2);
+    document.getElementById('totalCurrent').value = current.toFixed(2);
+    document.getElementById('totalDiscount').value = discount.toFixed(2);
+    document.getElementById('totalDue').value = due.toFixed(2);
+    document.getElementById('grandTotal').value = total.toFixed(2);
+}
+
+function numberToWordsMarathi(num) {
+    const units = ["शून्य", "एक", "दोन", "तीन", "चार", "पाच", "सहा", "सात", "आठ", "नऊ"];
+    const tens = ["", "दहा", "वीस", "तीस", "चाळीस", "पन्नास", "साठ", "सत्तर", "ऐंशी", "नव्वद"];
+    const teens = ["अकरा", "बारा", "तेरा", "चौदा", "पंधरा", "सोळा", "सतरा", "अठरा", "एकोणीस"];
+
+    if (num < 10) return units[num];
+    if (num < 20) return teens[num - 11];
+    if (num < 100) return tens[Math.floor(num / 10)] + " " + (num % 10 !== 0 ? units[num % 10] : "");
+    if (num < 1000) return units[Math.floor(num / 100)] + "शे " + numberToWordsMarathi(num % 100);
+    if (num < 100000) return numberToWordsMarathi(Math.floor(num / 1000)) + " हजार " + numberToWordsMarathi(num % 1000);
+    if (num < 10000000) return numberToWordsMarathi(Math.floor(num / 100000)) + " लाख " + numberToWordsMarathi(num % 100000);
+    return "संख्या खूप मोठी आहे";
+}
+
+</script>
+<!-- 
+<tr>
+    <td>दंड (0.3% जर 1 एप्रिल नंतर भरला असेल)</td>
+    <td colspan="5"><input type="text" id="penaltyAmount" style="width: 80%; border: none; background: transparent;" readonly></td>
+</tr> -->
+
+
+   
+</body>
+</html>

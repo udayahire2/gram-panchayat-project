@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marriage Certificate / लग्न प्रमाणपत्र</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .certificate {
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 2px solid #1a237e;
+        }
+
+        .certificate-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .emblem {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        .certificate-title {
+            text-align: center;
+            color: #1a237e;
+            margin: 20px 0;
+            font-size: 24px;
+            border-bottom: 2px solid #1a237e;
+            padding-bottom: 10px;
+        }
+
+        .details-grid {
+            display: grid;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .detail-row {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .certificate-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 40px;
+        }
+
+        .qr-code img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .print-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        #undo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #1a237e;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .certificate, .certificate * {
+                visibility: visible;
+            }
+            .certificate {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+            .print-btn, #undo {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="undo" onclick="undo()">Back / परत</button>
+    <div class="container">
+        <div class="certificate">
+            <div class="certificate-header">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="emblem">
+                <div class="header-text">
+                    <h2>महाराष्ट्र शासन / GOVERNMENT OF MAHARASHTRA</h2>
+                    <h3>लग्न नोंदणी विभाग / MARRIAGE REGISTRATION DEPARTMENT</h3>
+                </div>
+            </div>
+
+            <h1 class="certificate-title">लग्न प्रमाणपत्र / MARRIAGE CERTIFICATE</h1>
+
+            <div class="details-grid">
+                <div class="detail-row">
+                    <span class="label">पतीचे नाव / Husband's Name:</span>
+                    <span class="value" id="certHusbandName"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">पतीची जन्मतारीख / Husband's Date of Birth:</span>
+                    <span class="value" id="certHusbandDob"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">पतीचे वय / Husband's Age:</span>
+                    <span class="value" id="certHusbandAge"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">पत्नीचे नाव / Wife's Name:</span>
+                    <span class="value" id="certWifeName"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">पत्नीची जन्मतारीख / Wife's Date of Birth:</span>
+                    <span class="value" id="certWifeDob"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">पत्नीचे वय / Wife's Age:</span>
+                    <span class="value" id="certWifeAge"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">लग्नाची तारीख / Date of Marriage:</span>
+                    <span class="value" id="certMarriageDate"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">लग्न ठिकाण / Place of Marriage:</span>
+                    <span class="value" id="certPlace"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">नोंदणी तारीख / Registration Date:</span>
+                    <span class="value" id="certRegistrationDate"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">नोंदणी क्रमांक / Registration Number:</span>
+                    <span class="value" id="certRegistrationNumber"></span>
+                </div>
+            </div>
+
+            <div class="certificate-footer">
+                <div class="qr-code">
+                    <img src="" alt="QR Code" id="qrCodeImage">
+                </div>
+                <div class="signature">
+                    <p>Registrar (Marriage Registration)</p>
+                    <p>महाराष्ट्र शासन</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">Print Certificate / प्रमाणपत्र छापा</button>
+
+    <script>
+        // // Fetch and populate marriage certificate details
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     // Retrieve form data from localStorage
+        //     const formData = JSON.parse(localStorage.getItem('marriageCertificateData'));
+            
+            // if (formData) {
+            //     // Populate husband details
+            //     document.getElementById('certHusbandName').textContent = formData.husbandName;
+            //     document.getElementById('certHusbandDob').textContent = formatDate(formData.husbandDob);
+            //     document.getElementById('certHusbandAge').textContent = formData.husbandAge + ' वर्षे / years';
+
+                // // Populate wife details
+                // document.getElementById('certWifeName').textContent = formData.wifeName;
+                // document.getElementById('certWifeDob').textContent = formatDate(formData.wifeDob);
+                // document.getElementById('certWifeAge').textContent = formData.wifeAge + ' वर्षे / years';
+
+                // // Populate marriage details
+                // document.getElementById('certMarriageDate').textContent = formatDate(formData.marriageDate);
+                // document.getElementById('certPlace').textContent = formData.place;
+                // document.getElementById('certRegistrationDate').textContent = formatDate(formData.registrationDate);
+                // document.getElementById('certRegistrationNumber').textContent = formData.registrationNumber;
+
+        //         // Generate QR Code
+        //         generateQRCode(formData);
+
+        //         // Clear localStorage after populating
+        //         localStorage.removeItem('marriageCertificateData');
+        //     } else {
+        //         // If no data found, redirect back to form
+        //         alert('No marriage certificate data found. Please fill the form again.');
+        //         window.location.href = 'Marriage_certificate.html';
+        //     }
+        // });
+
+        // Format date to readable format
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-IN', options) + 
+                   ' / ' + 
+                   date.toLocaleDateString('mr-IN', options);
+        }
+
+        // Generate QR Code with marriage details
+        function generateQRCode(data) {
+            const qrCodeImg = document.getElementById('qrCodeImage');
+            qrCodeImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(JSON.stringify({
+                husbandName: data.husbandName,
+                wifeName: data.wifeName,
+                marriageDate: data.marriageDate,
+                registrationNumber: data.registrationNumber
+            }))}`;
+        }
+
+        // Undo/Back function
+        function undo() {
+            window.location.href = 'Marriage_certificate.html';
+        }
+    </script>
+</body>
+</html>

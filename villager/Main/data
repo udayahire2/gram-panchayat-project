@@ -1,0 +1,42 @@
+<div class="features-grid">
+          <div class="feature-card">
+            <h3>Gram Sevak</h3>
+            <p>Our elected village head leads the panchayat, making key decisions for community development and welfare.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h3>Ward Members</h3>
+            <p>Dedicated representatives from different wards ensure every area's voice is heard in the panchayat.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Panchayat Secretary</h3>
+            <p>Manages administrative functions and ensures smooth operation of panchayat activities.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Committee Members</h3>
+            <p>Specialized committees oversee various aspects like education, health, and infrastructure.</p>
+          </div>
+        </div>
+      </section>
+      <section class="responsibilities">
+        <h2>Our Responsibilities</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>Clerk</h3>
+            <p>Clerk is manage certificate form filled by villager and manage Tax.</p>
+          </div>
+         
+          </div>
+          <div class="feature-card">
+            <h3>Operator</h3>
+            <p>The operator is manage Schemes, Recipient, Meetings and Registered villager also</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact">
+        <h2>Connect With Us</h2>
+        <p>Visit us at the Panchayat Office during working hours (Monday to Saturday, 10 AM to 5 PM) for any assistance
+          or queries. We are here to serve our community and work towards its betterment.</p>
+      </section>
+    </div>

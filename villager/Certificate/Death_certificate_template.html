@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>मृत्यू प्रमाणपत्र / Death Certificate</title>
+    <link rel="stylesheet" href="birth.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="death.css" />
+  </head>
+  <body>
+    <style>
+        body{
+            font-family: poppins;
+            line-height: 1.6;
+        }
+.certificate-section {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.certificate {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 2px solid #1a237e;
+    position: relative;
+    background: white;
+}
+
+.certificate-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.emblem {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.header-text {
+    text-align: center;
+}
+
+.certificate-title {
+    text-align: center;
+    color: #1a237e;
+    margin: 20px 0;
+    font-size: 24px;
+    border-bottom: 2px solid #1a237e;
+    padding-bottom: 10px;
+}
+
+.legal-text {
+    font-size: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #666;
+}
+
+.details-grid {
+    display: grid;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+}
+
+.certificate-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 40px;
+}
+
+.qr-code img {
+    width: 100px;
+    height: 100px;
+}
+
+.signature {
+    text-align: right;
+}
+
+.print-btn, .back-btn {
+    margin: 20px auto;
+    display: block;
+    width: auto;
+}
+
+/* Print Styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .certificate, .certificate * {
+        visibility: visible;
+    }
+    .certificate {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .print-btn, .back-btn {
+        display: none;
+    }
+}
+    </style>
+    <main>
+      <div class="container">
+        <!-- Certificate Section -->
+        <div class="certificate-section" id="certificateSection">
+          <div class="certificate" id="certificate">
+            <div class="certificate-header">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg"
+                alt="Emblem"
+                class="emblem"
+              />
+              <div class="header-text">
+                <h2>महाराष्ट्र शासन / GOVERNMENT OF MAHARASHTRA</h2>
+                <h3>मृत्यू नोंदणी विभाग / DEPARTMENT OF DEATH REGISTRATION</h3>
+              </div>
+            </div>
+
+            <h1 class="certificate-title">
+              मृत्यू प्रमाणपत्र / DEATH CERTIFICATE
+            </h1>
+
+            <div class="certificate-content">
+              <p class="legal-text">
+                (ISSUED UNDER THE REGISTRATION OF BIRTHS AND DEATHS ACT, 1969)
+              </p>
+
+              <div class="details-grid">
+                <div class="detail-row">
+                  <span class="label">Name of Deceased:</span>
+                  <span class="value" id="certName"></span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Gender:</span>
+                  <span class="value" id="certGender"></span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Age:</span>
+                  <span class="value" id="certAge"></span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Aadhaar Number:</span>
+                  <span class="value" id="certAadhaar"></span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Date of Death:</span>
+                  <span class="value" id="certDateOfDeath"></span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Place of Death:</span>
+                  <span class="value" id="certPlaceOfDeath"></span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Address:</span>
+                  <span class="value" id="certAddress"></span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Registration Number:</span>
+                  <span class="value" id="certRegNumber"></span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Registration Date:</span>
+                  <span class="value" id="certRegDate"></span>
+                </div>
+              </div>
+
+              <div class="certificate-footer">
+                <div class="qr-code">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=example"
+                    alt="QR Code"
+                  />
+                </div>
+                <div class="signature">
+                  <p>Registrar (DEATH REGISTRATION)</p>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button onclick="printCertificate()" class="print-btn">
+            Print Certificate
+          </button>
+        </div>
+      </div>
+    </main>
+    <script src="death.js"></script>
+  </body>
+</html>
