@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-translate="title">Kusumba Gram Panchayat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="footer.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #f39c12;
+      --light-color: #f8f9fa;
+      --text-color: #333;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-img {
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .logo-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Navigation Styles */
+    .navbar {
+      background-color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 12px 15px;
+      color: var(--primary-color);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--secondary-color);
+      background: #f5f5f5;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 4px;
+      box-shadow: var(--shadow);
+      min-width: 180px;
+      display: none;
+      z-index: 10;
+      list-style: none;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 15px;
+    }
+
+    /* Mobile Menu Styles */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 25px;
+      cursor: pointer;
+    }
+
+    .bar {
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+      display: none;
+    }
+
+    .mobile-menu-overlay.active {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .mobile-menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .mobile-menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: white;
+        transition: var(--transition);
+        z-index: 100;
+      }
+
+      .navbar.active {
+        right: 0;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        padding: 60px 0;
+      }
+
+      .nav-links a {
+        padding: 12px 20px;
+      }
+
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        width: 100%;
+        display: none;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-img {
+        height: 40px;
+      }
+
+      .logo-name {
+        font-size: 1rem;
+      }
+
+      .lang-btn {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo-container">
+        <img src="../image/logo.png" alt="Gram Panchayat Logo" class="logo-img">
+        <h1 class="logo-name" data-translate="logo_name">Kusumba Grampanchayat</h1>
+      </div>
+      <div class="nav-controls">
+        <button id="lang-btn" data-translate="language">Language</button>
+        <ul class="dropdown-menu">
+          <li><a href="#" onclick="changeLanguage('en')">English</a></li>
+          <li><a href="#" onclick="changeLanguage('mr')">मराठी</a></li>
+        </ul>
+        <a href="../Admin Login/admin_login.php" class="btn btn-outline-light" data-translate="admin_login">Admin Login</a>
+        <div class="login-container">
+          <button class="login-btn" onclick="handleLogin()" data-translate="login">Login</button>
+        </div>
+        <div class="profile-container" style="display: none;">
+          <img src="../image/user (2).png" alt="Profile" class="profile-logo">
+        </div>
+      </div>
+      <div class="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <div class="mobile-menu-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../Main/index.html"  class="active"data-translate="home">Home</a></li>
+      <li><a href="../Main/about_village.html"  data-translate="aboutVillage">About Village</a></li>
+      <li><a href="../Main/about_us.html" data-translate="aboutUs">About Us</a></li>
+      <li><a href="gallery.php" data-translate="gallery">Gallery</a></li>
+      <li class="dropdown">
+        <a href="#" data-translate="notices">Notices</a>
+        <ul class="dropdown-menu">
+          <li><a href="../Schemes and meetings/view_meetings.php" data-translate="schemes">Schemes</a></li>
+          <li><a href="../Schemes and meetings/recipient.php" data-translate="recipient">Recipient</a></li>
+          <li><a href="../Schemes and meetings/view_schemes.php" data-translate="meetings">Meetings</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" data-translate="tax">Tax</a>
+        <ul class="dropdown-menu">
+          <li><a href="../Tax/home_tax.php" data-translate="homeTax">Home Tax</a></li>
+          <li><a href="../Tax/water_tax.php" data-translate="waterTax">Water Tax</a></li>
+          <li><a href="../Tax/sanitation_tax.php" data-translate="sanitationTax">Sanitation Tax</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" data-translate="certificates">Certificates</a>
+        <ul class="dropdown-menu">
+          <li><a href="../Certificate/Birth_certificate.php" data-translate="birthCertificate">Birth Certificate</a></li>
+          <li><a href="../Certificate/Death_certificate.php" data-translate="deathCertificate">Death Certificate</a></li>
+          <li><a href="../Certificate/Marriage_certificate.php" data-translate="marriageCertificate">Marriage Certificate</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="mobile-menu-overlay"></div>
+
+  
+  <main>
+    
+    <section class="hero-section">
+      <div class="slider-container">
+        <img src="../image/Gram panchayat Image.jpg" alt="Kusumba Village" class="hero-image active" loading="lazy">
+        <img src="../image/photo2.jpg" alt="Kusumba Village" class="hero-image" loading="lazy">
+        <img src="../image/photo4.jpg" alt="Kusumba Village" class="hero-image" loading="lazy">
+        <img src="../image/photo3.jpg" alt="Kusumba Village" class="hero-image" loading="lazy">
+        <img src="../image/photo5.jpg" alt="Kusumba Village" class="hero-image" loading="lazy">
+        <img src="../image/photo6.jpg" alt="Kusumba Village" class="hero-image" loading="lazy">
+        
+      </div>
+      <div class="slider-controls">
+        <button class="slider-arrow prev">&lt;</button>
+        <div class="slider-dots"></div>
+        <button class="slider-arrow next">&gt;</button>
+      </div>
+      <div class="hero-content">
+        <h1 data-translate="welcome">Welcome to Kusumba Village</h1>
+      </div>
+    </section>
+
+    <!-- Tax Services -->
+    <section class="service-section">
+      <h2 data-translate="tax_services">Tax Services</h2>
+      <div class="service-grid">
+        <a href="../Tax/water_tax.php" class="service-btn" data-translate="nav_water_tax">Water Tax</a>
+        <a href="../Tax/home_tax.php" class="service-btn" data-translate="nav_home_tax">Home Tax</a>
+        <a href="../Tax/sanitation_tax.php" class="service-btn" data-translate="nav_sanitation_tax">Sanitation Tax</a>
+      </div>
+    </section>
+
+    <!-- Certificate Services -->
+    <section class="service-section">
+      <h2 data-translate="certificate_services">Certificate Services</h2>
+      <div class="service-grid">
+        <a href="../Certificate/Birth_certificate.php" class="service-btn" data-translate="nav_birth_certificate">Birth Certificate</a>
+        <a href="../Certificate/Marriage_certificate.php" class="service-btn" data-translate="nav_marriage_certificate">Marriage Certificate</a>
+        <a href="../Certificate/Death_certificate.php" class="service-btn" data-translate="nav_death_certificate">Death Certificate</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="../Main/index.html">Home</a></li>
+          <li><a href="../Main/about_village.html">About Village</a></li>
+          <li><a href="../Main/about_us.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Tax Services</h4>
+        <ul>
+          <li><a href="../Tax/home_tax.php">Home Tax</a></li>
+          <li><a href="../Tax/water_tax.php">water Tax</a></li>
+          <li><a href="../Tax/sanitation_tax.php">Sanitation Tax</a></li>
+          
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Certificate Services</h4>
+        <ul>
+          <li><a href="../Certificate/Birth_certificate.php">Apply Birth Certificate</a></li>
+          <li><a href="../Certificate/Death_certificate.php">Apply Death Certificate</a></li>
+          <li><a href="../Certificate/Marriage_certificate.php">Apply Marriage Certificate</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <ul class="contact-info">
+          <li><i class="fas fa-map-marker-alt"></i> Kusumba Village, Maharashtra</li>
+        </ul>
+      </div>
+    
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Kusumba Gram Panchayat. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Language Content
+    const translations = {
+      en: {
+        nav_home: "Home",
+        nav_about_village: "About Village",
+        nav_about_us: "About Us",
+        nav_notices: "Notices",
+        nav_tax: "Tax",
+        nav_certificates: "Certificates",
+        nav_home_tax: "Home Tax",
+        nav_water_tax: "Water Tax",
+        nav_sanitation_tax: "Sanitation Tax",
+        nav_birth_certificate: "Birth Certificate",
+        nav_death_certificate: "Death Certificate",
+        nav_marriage_certificate: "Marriage Certificate",
+        nav_meetings: "Meetings",
+        nav_schemes: "Schemes",
+        nav_recipients: "Recipients",
+        nav_gallery: "Gallery",
+        welcome: "Welcome to Kusumba Village",
+        tax_services: "Tax Services",
+        certificate_services: "Certificate Services",
+        logo_name: "Kusumba Grampanchayat",
+        login: "Login",
+        admin_login: "Admin Login",
+        language: "Language",
+        title: "Kusumba Gram Panchayat"
+      },
+      mr: {
+        nav_home: "मुख्यपृष्ठ",
+        nav_about_village: "गावाविषयी",
+        nav_about_us: "आमच्याबद्दल",
+        nav_notices: "सूचना",
+        nav_tax: "कर",
+        nav_certificates: "प्रमाणपत्रे",
+        nav_home_tax: "घर कर",
+        nav_water_tax: "पाणी कर",
+        nav_sanitation_tax: "स्वच्छता कर",
+        nav_birth_certificate: "जन्म प्रमाणपत्र",
+        nav_death_certificate: "मृत्यू प्रमाणपत्र",
+        nav_marriage_certificate: "विवाह प्रमाणपत्र",
+        nav_meetings: "बैठका",
+        nav_schemes: "योजना",
+        nav_recipients: "लाभार्थी",
+        nav_gallery: "गॅलरी",
+        welcome: "कुसुंबा गावात आपले स्वागत आहे",
+        tax_services: "कर सेवा",
+        certificate_services: "प्रमाणपत्र सेवा",
+        logo_name: "कुसुंबा ग्रामपंचायत",
+        login: "लॉग इन",
+        admin_login: "प्रशासन लॉगिन",
+        language: "भाषा",
+        title: "कुसुंबा ग्रामपंचायत"
+      }
+    };
+
+    let currentLang = "en";
+
+    function updateContent(lang) {
+      currentLang = lang;
+      const content = translations[lang];
+      document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.getAttribute("data-translate").replace(/-/g, "_");
+        if (content[key]) {
+          el.textContent = content[key];
+          if (el.href) el.title = content[key];
+        }
+      });
+      document.documentElement.lang = lang;
+      document.getElementById("lang-btn").textContent = content.language;
+    }
+
+    function changeLanguage(lang) {
+      if (lang !== currentLang) updateContent(lang);
+    }
+
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navbar = document.querySelector(".navbar");
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      navbar.classList.toggle("active");
+      document.body.style.overflow = navbar.classList.contains("active") ? "hidden" : "";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navbar.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+    });
+
+    // Dropdown Menu
+    document.querySelectorAll(".dropdown > a").forEach(dropdownToggle => {
+      dropdownToggle.addEventListener("click", function(e) {
+        
+        e.preventDefault();
+        const dropdown = this.parentElement;
+        const menu = dropdown.querySelector(".dropdown-menu");
+        // Toggle display for mobile
+        if (menu.style.display === "block") {
+          menu.style.display = "none";
+        } else {
+          // Hide other open dropdowns
+          document.querySelectorAll(".dropdown .dropdown-menu").forEach(m => {
+            if (m !== menu) m.style.display = "none";
+          });
+          menu.style.display = "block";
+        }
+      });
+    });
+
+    // Login Handling
+    function handleLogin() {
+      window.location.href = "../login/login.php";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateContent("en");
+
+      // Check Login Status
+      const loginContainer = document.querySelector(".login-container");
+      const profileContainer = document.querySelector(".profile-container");
+      if (sessionStorage.getItem("isLoggedIn") === "true") {
+        loginContainer.innerHTML = `<button class="login-btn logout-btn">Logout</button>`;
+        document.querySelector(".logout-btn").addEventListener("click", () => {
+          sessionStorage.removeItem("isLoggedIn");
+          window.location.href = "../login/logout.php";
+        });
+        profileContainer.style.display = "block";
+        profileContainer.querySelector(".profile-logo").addEventListener("click", showProfileDetails);
+      }
+
+      // Slider
+      const images = document.querySelectorAll(".hero-image");
+      const dotsContainer = document.querySelector(".slider-dots");
+      let currentIndex = 0;
+
+      images.forEach((_, i) => {
+        const dot = document.createElement("div");
+        dot.classList.add("slider-dot");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      });
+
+      function updateSlide() {
+        images.forEach((img, i) => img.classList.toggle("active", i === currentIndex));
+        document.querySelectorAll(".slider-dot").forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
+      }
+
+      function goToSlide(i) {
+        currentIndex = i;
+        updateSlide();
+      }
+
+      document.querySelector(".slider-arrow.prev").addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateSlide();
+      });
+
+      document.querySelector(".slider-arrow.next").addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateSlide();
+      });
+
+      let slideInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateSlide();
+      }, 5000);
+
+      document.querySelector(".slider-container").addEventListener("mouseenter", () => clearInterval(slideInterval));
+      document.querySelector(".slider-container").addEventListener("mouseleave", () => {
+        slideInterval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % images.length;
+          updateSlide();
+        }, 5000);
+      });
+    });
+
+    function showProfileDetails() {
+      fetch("../login/get_user_details.php")
+        .then(res => {
+          if (!res.ok) throw new Error("Not logged in");
+          return res.json();
+        })
+        .then(user => {
+          const modal = document.createElement("div");
+          modal.innerHTML = `
+            <div class="modal-overlay">
+              <div class="modal-content">
+                <img src="../image/user (2).png" alt="Profile" class="modal-img">
+                <h2>Profile Details</h2>
+                <p><strong>Name:</strong> ${user.name}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>Mobile:</strong> ${user.mobile}</p>
+                <p><strong>Address:</strong> ${user.address}</p>
+                <button class="modal-close">Close</button>
+              </div>
+            </div>
+          `;
+          document.body.appendChild(modal);
+          modal.querySelector(".modal-close").addEventListener("click", () => modal.remove());
+        })
+        .catch(() => {
+          alert("Please log in again.");
+          sessionStorage.removeItem("isLoggedIn");
+          window.location.href = "../login/login.php";
+        });
+    }
+  </script>
+</body>
+</html>
